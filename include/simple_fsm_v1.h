@@ -1,7 +1,7 @@
 #ifndef SIMPLE_FSM_V1_H
 #define SIMPLE_FSM_V1_H
 
-// Simple fsm variant 1: A bit slow (state processing takes min. O(n) where n - current fsm state), consumes moderate memory and reliable.
+// Simple fsm variant 1: A bit slow (state processing takes min. O(n) where n - current fsm state), consumes moderate memory and is reliable.
 
 #include <fsm_common.h>
 #include <stddef.h>

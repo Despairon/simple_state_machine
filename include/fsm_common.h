@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #define FSM_NO_EVENT_ACTION NULL
+#define FSM_NULL_STATE ((fsm_state_t)-1)
 #define FSM_NULL_EVENT ((fsm_event_t)-1)
 
 typedef uint16_t fsm_state_t;

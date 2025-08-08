@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define FSM_NO_TRANSITION {FSM_NULL_EVENT, NULL}
+#define FSM_NO_TRANSITION {FSM_NULL_STATE, FSM_NO_EVENT_ACTION}
 
 typedef struct fsm_transition_s
 {
@@ -45,86 +45,5 @@ bool fsm_process_event(state_machine_t *fsm, fsm_event_t event, void *event_data
 
     return res;
 }
-// main.c: example of usage ------------------------------------------------------
-// typedef enum
-// {
-//     STATE_0 = 0,
-//     STATE_1,
-//     STATE_2,
-//     STATES_COUNT
-// } test_state_t;
-
-// typedef enum
-// {
-//     EVENT_0 = 0,
-//     EVENT_1,
-//     EVENT_2,
-//     EVENTS_COUNT
-// } test_event_t;
-
-// static void from_0_to_1()
-// {
-//     printf("Gone from 0 to 1\n");
-// }
-
-// static void from_0_to_2()
-// {
-//     printf("Gone from 0 to 2\n");
-// }
-
-// static void from_1_to_0()
-// {
-//     printf("Gone from 1 to 0\n");
-// }
-
-// static void from_1_to_2()
-// {
-//     printf("Gone from 1 to 2\n");
-// }
-
-// static void from_2_to_0()
-// {
-//     printf("Gone from 2 to 0\n");
-// }
-
-// static void from_2_to_1()
-// {
-//     printf("Gone from 2 to 1\n");
-// }
-
-// static const transition_t fsm_transitions[STATES_COUNT][EVENTS_COUNT] =
-// {
-//     [STATE_0] =
-//     {
-//         [EVENT_0] = no_transition,
-//         [EVENT_1] = {STATE_1, &from_0_to_1},
-//         [EVENT_2] = {STATE_2, &from_0_to_2}
-//     },
-//     [STATE_1] =
-//     {
-//         [EVENT_0] = {STATE_0, &from_1_to_0},
-//         [EVENT_1] = no_transition,
-//         [EVENT_2] = {STATE_2, &from_1_to_2}
-//     },
-//     [STATE_2] =
-//     {
-//         [EVENT_0] = {STATE_0, &from_2_to_0},
-//         [EVENT_1] = {STATE_1, &from_2_to_1},
-//         [EVENT_2] = no_transition
-//     }
-// };
-
-// int main()
-// {
-//     static fsm_t fsm = {STATE_0, EVENTS_COUNT, (const transition_t*)fsm_transitions};
-
-//     static const event_t events_to_process[] = {EVENT_0, EVENT_1, EVENT_1, EVENT_0, EVENT_2, EVENT_2, EVENT_1, EVENT_2, EVENT_0};
-//     size_t i = 0;
-//     for(;i < sizeof(events_to_process) / sizeof(events_to_process[0]); i++)
-//         if (!fsm_process_event(&fsm, events_to_process[i]))
-//             printf("No transition from %d by event %d :(\n", fsm.curr_state, events_to_process[i]);
-
-//     return 0;
-// }
 
 #endif
