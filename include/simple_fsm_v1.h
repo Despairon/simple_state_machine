@@ -3,12 +3,8 @@
 
 // Simple fsm variant 1: A bit slow (state processing takes min. O(n) where n - current fsm state), consumes moderate memory and is reliable.
 
-#include <fsm_common.h>
+#include "fsm_common.h"
 #include <stddef.h>
-#include <stdbool.h>
-
-struct state_machine_s;
-typedef struct state_machine_s state_machine_t;
 
 typedef struct fsm_transition_s
 {
@@ -25,7 +21,7 @@ struct state_machine_s
     size_t transitions_size;
 };
 
-void fsm_process_event(state_machine_t *fsm, fsm_event_t event, void *event_data)
+bool fsm_process_event(state_machine_t *fsm, fsm_event_t event, void *event_data)
 {
     if (fsm)
     {

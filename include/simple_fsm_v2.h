@@ -3,10 +3,9 @@
 
 // Simple fsm variant 2: fast, but consumes more memory than and less reliable than v1. The user must define all event reactions (even no reaction) otherwise crashes possible.
 
-#include <fsm_common.h>
+#include "fsm_common.h"
 #include <stddef.h>
 #include <string.h>
-#include <stdbool.h>
 
 #define FSM_NO_TRANSITION {FSM_NULL_STATE, FSM_NO_EVENT_ACTION}
 
@@ -16,12 +15,12 @@ typedef struct fsm_transition_s
     transition_action_t action;
 } fsm_transition_t;
 
-typedef struct state_machine_s
+struct state_machine_s
 {
     fsm_state_t current_state;
     int events_count;
     const fsm_transition_t *transitions;
-} state_machine_t;
+};
 
 const fsm_transition_t fsm_no_transition = FSM_NO_TRANSITION;
 
